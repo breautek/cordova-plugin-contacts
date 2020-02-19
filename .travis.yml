@@ -25,7 +25,7 @@ matrix:
     android:
       components:
       - tools
-      - build-tools-26.0.2
+      - build-tools-28.0.3
   - env: PLATFORM=android-5.1
     os: linux
     language: android
@@ -33,7 +33,7 @@ matrix:
     android:
       components:
       - tools
-      - build-tools-26.0.2
+      - build-tools-28.0.3
   - env: PLATFORM=android-6.0
     os: linux
     language: android
@@ -41,7 +41,7 @@ matrix:
     android:
       components:
       - tools
-      - build-tools-26.0.2
+      - build-tools-28.0.3
   - env: PLATFORM=android-7.0
     os: linux
     language: android
@@ -49,7 +49,23 @@ matrix:
     android:
       components:
       - tools
-      - build-tools-26.0.2
+      - build-tools-28.0.3
+  - env: PLATFORM=android-8.0
+    os: linux
+    language: android
+    jdk: oraclejdk8
+    android:
+      components:
+      - tools
+      - build-tools-28.0.3
+  - env: PLATFORM=android-9.0
+    os: linux
+    language: android
+    jdk: oraclejdk8
+    android:
+      components:
+      - tools
+      - build-tools-28.0.3
 before_install:
 - rm -rf ~/.nvm && git clone https://github.com/creationix/nvm.git ~/.nvm && (cd ~/.nvm
   && git checkout `git describe --abbrev=0 --tags`) && source ~/.nvm/nvm.sh && nvm
@@ -57,7 +73,7 @@ before_install:
 - node --version
 - if [[ "$PLATFORM" =~ android ]]; then gradle --version; fi
 - if [[ "$PLATFORM" =~ ios ]]; then npm install -g ios-deploy; fi
-- if [[ "$PLATFORM" =~ android ]]; then echo y | android update sdk -u --filter android-22,android-23,android-24,android-25,android-26;
+- if [[ "$PLATFORM" =~ android ]]; then echo y | android update sdk -u --filter android-28,android-29;
   fi
 - git clone https://github.com/apache/cordova-paramedic /tmp/paramedic && pushd /tmp/paramedic
   && npm install && popd
